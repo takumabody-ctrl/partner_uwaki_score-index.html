@@ -1,0 +1,2051 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パートナーの行動変化 浮気確率スコア 診断｜冷静に数字で見る無料ツール</title>
+<meta name="description" content="心理テストではなく、パートナーの行動変化を5カテゴリで数値化する無料診断ツール。探偵的観点で「気のせい」か「本当に変わった」かを冷静に分析。">
+<meta name="theme-color" content="#0a0a0f">
+<meta property="og:title" content="パートナーの行動変化 浮気確率スコア 診断">
+<meta property="og:description" content="「気のせい」か「本当に変わった」か。行動変化を数値化する。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  /* ========== ベース ========== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #0a0a0f;
+    color: #f1f5f9;
+    line-height: 1.7;
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-image:
+      radial-gradient(circle at 18% 8%, rgba(232, 121, 249, 0.10), transparent 50%),
+      radial-gradient(circle at 82% 55%, rgba(168, 85, 247, 0.06), transparent 55%),
+      radial-gradient(circle at 50% 100%, rgba(232, 121, 249, 0.05), transparent 60%);
+    background-attachment: fixed;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 1;
+  }
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 16px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ========== タイトル切り替え演出 ========== */
+  .title-switch {
+    position: relative;
+    min-height: 90px;
+  }
+  .title-switch .switch-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    opacity: 0;
+    animation: switchTitle 4s ease forwards;
+  }
+  .title-switch .switch-text.s1 {
+    animation-delay: 0s;
+  }
+  .title-switch .switch-text.s2 {
+    animation: switchTitle2 4s ease forwards;
+    animation-delay: 1.6s;
+  }
+  @keyframes switchTitle {
+    0% { opacity: 0; transform: translateY(8px); }
+    10%, 35% { opacity: 1; transform: translateY(0); }
+    45%, 100% { opacity: 0; transform: translateY(-8px); }
+  }
+  @keyframes switchTitle2 {
+    0% { opacity: 0; transform: translateY(8px); }
+    15%, 100% { opacity: 1; transform: translateY(0); }
+  }
+  .title-switch .pre-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(14px, 4vw, 22px);
+    color: #e879f9;
+    letter-spacing: 0.3em;
+    text-shadow: 0 0 20px rgba(232, 121, 249, 0.5);
+    font-weight: 900;
+  }
+  .title-switch .pre-sub {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #94a3b8;
+    letter-spacing: 0.25em;
+    margin-top: 8px;
+  }
+
+  /* ========== ヘッダー ========== */
+  .header {
+    text-align: center;
+    padding: 24px 0 28px;
+    animation: fadeDown 0.8s ease;
+  }
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .header-badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .detective-tag {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #e879f9;
+    letter-spacing: 0.3em;
+    padding: 5px 12px;
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    text-transform: uppercase;
+    background: rgba(232, 121, 249, 0.06);
+  }
+  .series-tag {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 9.5px;
+    color: #94a3b8;
+    letter-spacing: 0.3em;
+    padding: 5px 12px;
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    text-transform: uppercase;
+  }
+  h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(20px, 5.5vw, 30px);
+    font-weight: 900;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    letter-spacing: 0.03em;
+  }
+  h1 .h1-line2 {
+    display: block;
+    background: linear-gradient(135deg, #e879f9 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 30px rgba(232, 121, 249, 0.3);
+    font-size: 0.85em;
+  }
+  .catchphrase {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    margin: 18px auto 6px;
+    max-width: 520px;
+    line-height: 1.8;
+    font-weight: 600;
+  }
+  .subcopy {
+    font-size: 12px;
+    color: #94a3b8;
+    max-width: 520px;
+    margin: 0 auto 18px;
+    line-height: 1.7;
+  }
+  .warning-note {
+    display: block;
+    font-size: 11px;
+    color: #e879f9;
+    padding: 10px 16px;
+    border: 1px dashed rgba(232, 121, 249, 0.4);
+    border-radius: 2px;
+    letter-spacing: 0.02em;
+    background: rgba(232, 121, 249, 0.04);
+    max-width: 480px;
+    margin: 12px auto 0;
+    line-height: 1.7;
+  }
+  .warning-note strong { color: #fff; }
+
+  /* ========== セクション ========== */
+  .section {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    padding: 26px 22px;
+    margin: 18px 0;
+    backdrop-filter: blur(8px);
+    animation: fadeUp 0.7s ease;
+    position: relative;
+  }
+  .section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 40px; height: 2px;
+    background: linear-gradient(90deg, #e879f9, transparent);
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .step-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #e879f9;
+    letter-spacing: 0.3em;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .step-label::before { content: '▶'; color: #e879f9; font-size: 9px; }
+  .section-title {
+    font-size: 17px;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-bottom: 22px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ========== フィールド ========== */
+  .field { margin-bottom: 24px; }
+  .field:last-child { margin-bottom: 0; }
+  .field-label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    letter-spacing: 0.04em;
+  }
+  .field-label .badge-mini {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #e879f9;
+    letter-spacing: 0.1em;
+  }
+  .field-label .req {
+    font-size: 9px;
+    background: #e879f9;
+    color: #0a0a0f;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+  .field-label .opt {
+    font-size: 9px;
+    background: #334155;
+    color: #cbd5e1;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 700;
+  }
+  .hint { font-size: 10.5px; color: #64748b; margin-top: 6px; line-height: 1.6; }
+
+  /* ========== スライダー ========== */
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #e879f9 0%, #a855f7 var(--pct, 50%), #2a1040 var(--pct, 50%));
+    border-radius: 0;
+    outline: none;
+    margin: 14px 0;
+    touch-action: pan-x;
+    -ms-touch-action: pan-x;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #0a0a0f;
+    border: 2px solid #e879f9;
+    cursor: grab;
+    box-shadow: 0 0 14px rgba(232, 121, 249, 0.6);
+    transition: transform 0.18s;
+  }
+  input[type="range"]::-webkit-slider-thumb:hover { transform: scale(1.15); }
+  input[type="range"]::-webkit-slider-thumb:active { cursor: grabbing; transform: scale(1.2); }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    background: #0a0a0f;
+    border: 2px solid #e879f9;
+    cursor: grab;
+    box-shadow: 0 0 14px rgba(232, 121, 249, 0.6);
+  }
+  .slider-touch { padding: 8px 0; position: relative; z-index: 2; touch-action: pan-x; }
+  .slider-marks {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #475569;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.06em;
+  }
+
+  /* 直感スコア表示 */
+  .intuition-value { text-align: center; margin-bottom: 8px; }
+  .intuition-value .num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    color: #e879f9;
+    text-shadow: 0 0 16px rgba(232, 121, 249, 0.4);
+  }
+  .intuition-value .unit { font-size: 14px; color: #94a3b8; margin-left: 4px; }
+
+  /* ========== ボタングループ ========== */
+  .btn-grid { display: grid; gap: 8px; }
+  .btn-grid.col-2 { grid-template-columns: 1fr 1fr; }
+  .btn-grid.col-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .btn-grid.col-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 520px) {
+    .btn-grid.col-4 { grid-template-columns: 1fr 1fr; }
+    .btn-grid.col-3 { grid-template-columns: 1fr 1fr; }
+  }
+  .opt-btn {
+    background: #120a18;
+    border: 1px solid #2a1040;
+    color: #94a3b8;
+    padding: 13px 8px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: inherit;
+    text-align: center;
+    line-height: 1.4;
+  }
+  .opt-btn:hover {
+    border-color: rgba(232, 121, 249, 0.5);
+    color: #f1f5f9;
+    transform: translateY(-1px);
+  }
+  .opt-btn.active {
+    background: linear-gradient(135deg, rgba(232, 121, 249, 0.25), rgba(168, 85, 247, 0.12));
+    border-color: #e879f9;
+    color: #f0abfc;
+    box-shadow: 0 0 18px rgba(232, 121, 249, 0.3);
+  }
+  .opt-btn small { display: block; font-size: 10px; color: #64748b; margin-top: 2px; font-weight: 500; }
+  .opt-btn.active small { color: rgba(240, 171, 252, 0.7); }
+
+  /* ========== カテゴリ ========== */
+  .category-block {
+    margin-bottom: 20px;
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    overflow: hidden;
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.6), rgba(15, 8, 22, 0.6));
+  }
+  .category-head {
+    padding: 14px 16px;
+    background: linear-gradient(135deg, rgba(232, 121, 249, 0.10), rgba(168, 85, 247, 0.06));
+    border-bottom: 1px solid #2a1040;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .category-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #f1f5f9;
+    letter-spacing: 0.02em;
+  }
+  .category-name .emoji { font-size: 18px; }
+  .category-count {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    color: #94a3b8;
+  }
+  .category-count.has {
+    color: #e879f9;
+    text-shadow: 0 0 10px rgba(232, 121, 249, 0.3);
+  }
+  .category-count.high {
+    color: #ef4444;
+    text-shadow: 0 0 10px rgba(239, 68, 68, 0.4);
+  }
+  .check-list {
+    padding: 12px 14px;
+    display: grid;
+    gap: 6px;
+  }
+  .check-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #0a0a0f;
+    border: 1px solid #1a0a25;
+    padding: 11px 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.18s;
+    font-size: 12.5px;
+    color: #cbd5e1;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+  .check-row:hover { border-color: rgba(232, 121, 249, 0.4); }
+  .check-row input[type="checkbox"] {
+    width: 16px; height: 16px;
+    accent-color: #e879f9;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+  .check-row.checked {
+    background: rgba(232, 121, 249, 0.06);
+    border-color: rgba(232, 121, 249, 0.5);
+    color: #f0abfc;
+  }
+
+  /* ========== リアルタイムプレビュー ========== */
+  .live-preview {
+    position: sticky;
+    bottom: 12px;
+    z-index: 50;
+    background: linear-gradient(135deg, rgba(18, 10, 24, 0.98), rgba(26, 10, 37, 0.98));
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(232, 121, 249, 0.4);
+    border-radius: 2px;
+    padding: 12px 16px;
+    margin: 16px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    flex-wrap: wrap;
+    gap: 6px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .live-preview .lbl { color: #94a3b8; letter-spacing: 0.05em; font-weight: 700; }
+  .live-preview .val {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #e879f9;
+    text-shadow: 0 0 12px rgba(232, 121, 249, 0.4);
+    display: flex;
+    align-items: baseline;
+    gap: 4px;
+  }
+  .live-preview .val .lv { font-size: 11px; color: #94a3b8; font-family: 'Noto Sans JP', sans-serif; font-weight: 700; }
+  .live-preview .val.lv-LOW { color: #22c55e; text-shadow: 0 0 12px rgba(34, 197, 94, 0.4); }
+  .live-preview .val.lv-NOTICE { color: #3b82f6; text-shadow: 0 0 12px rgba(59, 130, 246, 0.4); }
+  .live-preview .val.lv-CAUTION { color: #fbbf24; text-shadow: 0 0 12px rgba(251, 191, 36, 0.4); }
+  .live-preview .val.lv-WARNING { color: #f97316; text-shadow: 0 0 12px rgba(249, 115, 22, 0.4); }
+  .live-preview .val.lv-CRITICAL { color: #ef4444; text-shadow: 0 0 14px rgba(239, 68, 68, 0.5); }
+
+  /* ========== CTA ========== */
+  .cta-wrap { text-align: center; margin: 32px 0 12px; }
+  .cta-btn {
+    background: linear-gradient(135deg, #e879f9 0%, #a855f7 100%);
+    border: none;
+    color: #0a0a0f;
+    padding: 22px 56px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.25em;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 32px rgba(232, 121, 249, 0.4), 0 4px 14px rgba(0, 0, 0, 0.4);
+    text-transform: uppercase;
+  }
+  .cta-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 50px rgba(232, 121, 249, 0.6), 0 8px 24px rgba(0, 0, 0, 0.5);
+  }
+  .cta-wrap.calculated .cta-btn {
+    background: linear-gradient(135deg, #120a18, #2a1040);
+    color: #94a3b8;
+    box-shadow: 0 0 12px rgba(232, 121, 249, 0.2);
+  }
+  .cta-wrap.calculated .cta-btn:hover { color: #e879f9; }
+
+  /* ========== 結果 ========== */
+  #resultArea { display: none; }
+  #resultArea.show { display: block; animation: resultReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+  @keyframes resultReveal {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .result-block { animation: blockReveal 0.6s ease backwards; }
+  .result-block:nth-child(1) { animation-delay: 0.0s; }
+  .result-block:nth-child(2) { animation-delay: 0.15s; }
+  .result-block:nth-child(3) { animation-delay: 0.30s; }
+  .result-block:nth-child(4) { animation-delay: 0.45s; }
+  .result-block:nth-child(5) { animation-delay: 0.60s; }
+  .result-block:nth-child(6) { animation-delay: 0.75s; }
+  .result-block:nth-child(7) { animation-delay: 0.90s; }
+  .result-block:nth-child(8) { animation-delay: 1.05s; }
+  @keyframes blockReveal {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ① メインスコア */
+  .score-section {
+    text-align: center;
+    padding: 40px 20px;
+    margin: 20px 0;
+    background:
+      radial-gradient(ellipse at center, rgba(232, 121, 249, 0.10), transparent 60%),
+      linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 2px solid rgba(232, 121, 249, 0.4);
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+  .score-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 60px; height: 2px;
+    background: linear-gradient(90deg, #e879f9, transparent);
+  }
+  .score-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    color: #94a3b8;
+    letter-spacing: 0.3em;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+  .score-number-wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .score-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: clamp(72px, 17vw, 120px);
+    font-weight: 900;
+    line-height: 1;
+    background: linear-gradient(180deg, #e879f9 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 80px rgba(232, 121, 249, 0.5);
+    filter: drop-shadow(0 0 30px rgba(232, 121, 249, 0.4));
+    letter-spacing: -0.02em;
+    transition: filter 0.4s;
+  }
+  .score-unit {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 28px;
+    color: #94a3b8;
+    font-weight: 900;
+    letter-spacing: 0.05em;
+  }
+  /* レベル別 */
+  .score-section.lv-LOW { border-color: #22c55e; }
+  .score-section.lv-LOW .score-number {
+    background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(34, 197, 94, 0.5));
+  }
+  .score-section.lv-NOTICE { border-color: #3b82f6; }
+  .score-section.lv-NOTICE .score-number {
+    background: linear-gradient(180deg, #3b82f6 0%, #1d4ed8 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(59, 130, 246, 0.5));
+  }
+  .score-section.lv-CAUTION { border-color: #fbbf24; }
+  .score-section.lv-CAUTION .score-number {
+    background: linear-gradient(180deg, #fbbf24 0%, #d97706 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(251, 191, 36, 0.5));
+  }
+  .score-section.lv-WARNING { border-color: #f97316; }
+  .score-section.lv-WARNING .score-number {
+    background: linear-gradient(180deg, #f97316 0%, #c2410c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 30px rgba(249, 115, 22, 0.5));
+  }
+  .score-section.lv-CRITICAL { border-color: #ef4444; }
+  .score-section.lv-CRITICAL .score-number {
+    background: linear-gradient(180deg, #ef4444 0%, #b91c1c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 0 40px rgba(239, 68, 68, 0.7));
+    animation: scoreBlink 0.8s ease-in-out infinite alternate;
+  }
+  @keyframes scoreBlink {
+    from { opacity: 1; }
+    to { opacity: 0.55; }
+  }
+
+  .level-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 18px;
+    border: 2px solid;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    border-radius: 0;
+    margin-top: 10px;
+  }
+  .level-tag.lv-LOW { border-color: #22c55e; color: #22c55e; }
+  .level-tag.lv-NOTICE { border-color: #3b82f6; color: #3b82f6; }
+  .level-tag.lv-CAUTION { border-color: #fbbf24; color: #fbbf24; }
+  .level-tag.lv-WARNING { border-color: #f97316; color: #f97316; }
+  .level-tag.lv-CRITICAL {
+    border-color: #ef4444; color: #ef4444;
+    animation: critPulse 1.6s ease-in-out infinite;
+  }
+  @keyframes critPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4); }
+    50% { box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+  }
+  .level-msg {
+    font-size: 13.5px;
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-top: 14px;
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    font-weight: 500;
+  }
+  .probability-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+    max-width: 480px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .probability-cell {
+    background: #0a0a0f;
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    padding: 12px;
+    text-align: center;
+  }
+  .probability-cell .lbl { font-size: 10.5px; color: #94a3b8; margin-bottom: 4px; }
+  .probability-cell .num {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: #cbd5e1;
+  }
+  .probability-cell.warn .num { color: #f97316; text-shadow: 0 0 10px rgba(249, 115, 22, 0.3); }
+  .probability-cell.safe .num { color: #22c55e; text-shadow: 0 0 10px rgba(34, 197, 94, 0.3); }
+
+  /* ② レーダーチャート */
+  .radar-card {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+    text-align: center;
+  }
+  .radar-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    color: #e879f9;
+    letter-spacing: 0.2em;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  .radar-sub {
+    font-size: 11.5px;
+    color: #94a3b8;
+    margin-bottom: 14px;
+    text-align: left;
+    line-height: 1.6;
+  }
+  .radar-svg {
+    max-width: 320px;
+    width: 100%;
+    height: auto;
+  }
+  .radar-legend {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 11px;
+    text-align: left;
+  }
+  .legend-item {
+    background: #0a0a0f;
+    border: 1px solid #1a0a25;
+    border-radius: 2px;
+    padding: 8px 12px;
+    color: #cbd5e1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .legend-item.top {
+    border-color: rgba(232, 121, 249, 0.5);
+    background: rgba(232, 121, 249, 0.06);
+  }
+  .legend-item .lbl { font-size: 11px; }
+  .legend-item .val {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 800;
+    color: #e879f9;
+    font-size: 12px;
+  }
+  .legend-item.top .val { color: #f0abfc; text-shadow: 0 0 8px rgba(232, 121, 249, 0.4); }
+
+  /* ③ TOP3 */
+  .top3-card {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+  }
+  .top3-title {
+    font-family: 'Noto Sans JP', sans-serif;
+    font-size: 15px;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-bottom: 6px;
+  }
+  .top3-sub {
+    font-size: 11px;
+    color: #94a3b8;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .top3-row {
+    background: #0a0a0f;
+    border: 1px solid #2a1040;
+    border-left: 3px solid;
+    border-radius: 2px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+  .top3-row.rank1 { border-left-color: #ef4444; }
+  .top3-row.rank2 { border-left-color: #f97316; }
+  .top3-row.rank3 { border-left-color: #fbbf24; }
+  .top3-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+  }
+  .top3-rank {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    font-weight: 900;
+    padding: 3px 8px;
+    border-radius: 2px;
+  }
+  .top3-row.rank1 .top3-rank { background: #ef4444; color: #fff; }
+  .top3-row.rank2 .top3-rank { background: #f97316; color: #fff; }
+  .top3-row.rank3 .top3-rank { background: #fbbf24; color: #0a0a0f; }
+  .top3-name {
+    font-size: 12.5px;
+    color: #f1f5f9;
+    font-weight: 700;
+    flex: 1;
+    min-width: 200px;
+  }
+  .top3-desc {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    padding-left: 4px;
+  }
+  .top3-desc .arrow { color: #e879f9; margin-right: 4px; font-weight: 800; }
+
+  /* ④ 組み合わせ分析 */
+  .combo-card {
+    background: linear-gradient(135deg, rgba(232, 121, 249, 0.08), rgba(168, 85, 247, 0.03));
+    border: 1px solid rgba(232, 121, 249, 0.35);
+    border-left: 3px solid #e879f9;
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+  }
+  .combo-tag {
+    display: inline-block;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #e879f9;
+    letter-spacing: 0.2em;
+    background: rgba(232, 121, 249, 0.12);
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    font-weight: 800;
+    border-radius: 2px;
+  }
+  .combo-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-bottom: 10px;
+  }
+  .combo-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .combo-chip {
+    background: rgba(232, 121, 249, 0.15);
+    color: #f0abfc;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+    border: 1px solid rgba(232, 121, 249, 0.4);
+  }
+  .combo-body {
+    font-size: 13px;
+    color: #cbd5e1;
+    line-height: 1.9;
+  }
+  .combo-body strong { color: #f0abfc; }
+  .combo-footnote {
+    margin-top: 12px;
+    padding: 10px 12px;
+    background: rgba(148, 163, 184, 0.08);
+    border-left: 2px solid #94a3b8;
+    border-radius: 2px;
+    font-size: 11.5px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-style: italic;
+  }
+
+  /* ⑤ 他の可能性 */
+  .other-possibility {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(34, 197, 94, 0.03));
+    border: 2px solid rgba(34, 197, 94, 0.4);
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+  }
+  .other-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 900;
+    color: #86efac;
+    margin-bottom: 6px;
+  }
+  .other-sub {
+    font-size: 11.5px;
+    color: #cbd5e1;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .other-list {
+    display: grid;
+    gap: 8px;
+  }
+  .other-row {
+    background: #0a0a0f;
+    border: 1px solid #1a0a25;
+    border-radius: 2px;
+    padding: 10px 14px;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    font-size: 12px;
+    color: #cbd5e1;
+    line-height: 1.6;
+  }
+  .other-row .icon { font-size: 18px; line-height: 1; flex-shrink: 0; margin-top: 1px; }
+  .other-row .text strong { color: #86efac; font-weight: 700; }
+  .other-row .text .reason { color: #f0abfc; font-weight: 600; }
+  .other-final {
+    margin-top: 14px;
+    padding: 14px 16px;
+    background: rgba(34, 197, 94, 0.10);
+    border-radius: 2px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.8;
+    text-align: center;
+  }
+  .other-final strong { color: #86efac; }
+
+  /* ⑥ アクション */
+  .action-card {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+  }
+  .action-card.lv-LOW, .action-card.lv-NOTICE { border-color: rgba(34, 197, 94, 0.4); }
+  .action-card.lv-CAUTION, .action-card.lv-WARNING { border-color: rgba(251, 191, 36, 0.4); }
+  .action-card.lv-CRITICAL { border-color: rgba(239, 68, 68, 0.5); }
+  .action-title {
+    font-size: 15px;
+    font-weight: 900;
+    color: #f1f5f9;
+    margin-bottom: 6px;
+  }
+  .action-sub {
+    font-size: 11.5px;
+    color: #94a3b8;
+    margin-bottom: 14px;
+    line-height: 1.6;
+  }
+  .action-list {
+    list-style: none;
+    counter-reset: act;
+    padding: 0;
+  }
+  .action-list li {
+    background: #0a0a0f;
+    border: 1px solid #2a1040;
+    border-left: 3px solid #e879f9;
+    border-radius: 2px;
+    padding: 14px 16px 14px 50px;
+    margin-bottom: 8px;
+    position: relative;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #cbd5e1;
+    counter-increment: act;
+  }
+  .action-list li::before {
+    content: counter(act);
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 26px; height: 26px;
+    background: linear-gradient(135deg, #e879f9, #a855f7);
+    color: #0a0a0f;
+    font-weight: 900;
+    font-size: 13px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .action-list li strong { color: #f0abfc; }
+  .action-warn {
+    margin-top: 14px;
+    padding: 12px 14px;
+    background: rgba(239, 68, 68, 0.08);
+    border-left: 3px solid #ef4444;
+    border-radius: 2px;
+    font-size: 12px;
+    color: #fca5a5;
+    line-height: 1.7;
+  }
+  .action-warn strong { color: #fff; }
+
+  /* ⑦ 免責 */
+  .disclaimer-card {
+    background: linear-gradient(180deg, rgba(18, 10, 24, 0.95), rgba(15, 8, 22, 0.95));
+    border: 1px dashed rgba(232, 121, 249, 0.35);
+    border-radius: 2px;
+    padding: 22px 20px;
+    margin: 18px 0;
+  }
+  .disclaimer-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 900;
+    color: #e879f9;
+    margin-bottom: 12px;
+  }
+  .disclaimer-body {
+    font-size: 12px;
+    color: #cbd5e1;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+  .disclaimer-body strong { color: #f0abfc; }
+  .takuma-msg {
+    margin-top: 16px;
+    padding: 14px 16px;
+    background: rgba(232, 121, 249, 0.06);
+    border-left: 3px solid #e879f9;
+    border-radius: 2px;
+    font-size: 12.5px;
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-style: italic;
+  }
+  .takuma-msg .name {
+    font-family: 'Orbitron', sans-serif;
+    color: #e879f9;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    font-style: normal;
+    margin-right: 6px;
+  }
+
+  /* シェア */
+  .share-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .share-btn {
+    background: #120a18;
+    border: 1px solid #2a1040;
+    color: #cbd5e1;
+    padding: 13px 12px;
+    border-radius: 2px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.22s;
+    font-family: inherit;
+  }
+  .share-btn:hover {
+    border-color: rgba(232, 121, 249, 0.5);
+    background: #1a0a25;
+  }
+  .share-btn.primary {
+    background: linear-gradient(135deg, rgba(232, 121, 249, 0.2), rgba(168, 85, 247, 0.1));
+    border-color: #e879f9;
+  }
+
+  /* フッター */
+  footer {
+    text-align: center;
+    padding: 44px 16px 32px;
+    color: #475569;
+    font-size: 11px;
+    line-height: 1.9;
+  }
+  .footer-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 13px;
+    color: #e879f9;
+    letter-spacing: 0.15em;
+    margin-bottom: 8px;
+  }
+  .footer-desc { font-size: 11px; color: #64748b; margin-bottom: 24px; line-height: 1.8; }
+  .sister-section {
+    margin: 28px 0 24px;
+    padding-top: 24px;
+    border-top: 1px solid #2a1040;
+  }
+  .sister-label {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 10px;
+    color: #e879f9;
+    letter-spacing: 0.25em;
+    margin-bottom: 12px;
+  }
+  .sister-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #120a18;
+    border: 1px solid #2a1040;
+    border-radius: 2px;
+    padding: 12px 16px;
+    margin-bottom: 8px;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all 0.25s;
+    font-size: 12.5px;
+    font-weight: 500;
+    gap: 8px;
+  }
+  .sister-link:hover { border-color: rgba(232, 121, 249, 0.5); color: #f0abfc; transform: translateX(4px); }
+  .sister-link .arrow { color: #e879f9; font-family: 'Orbitron', sans-serif; }
+  .sister-link .price {
+    font-size: 10px;
+    background: rgba(232, 121, 249, 0.15);
+    color: #f0abfc;
+    padding: 2px 6px;
+    border-radius: 2px;
+    font-weight: 800;
+    font-family: 'Orbitron', sans-serif;
+    letter-spacing: 0.05em;
+  }
+  .sister-link .price.soon { background: rgba(251, 191, 36, 0.12); color: #fbbf24; }
+  .sister-link.disabled { cursor: not-allowed; opacity: 0.6; }
+  .note-link {
+    margin-top: 16px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+  }
+  .note-link a {
+    color: #f0abfc;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(240, 171, 252, 0.3);
+    padding-bottom: 1px;
+  }
+
+  .toast {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: linear-gradient(135deg, #e879f9, #a855f7);
+    color: #0a0a0f;
+    padding: 12px 24px;
+    border-radius: 2px;
+    font-weight: 800;
+    font-size: 12px;
+    box-shadow: 0 8px 32px rgba(232, 121, 249, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+    z-index: 100;
+    letter-spacing: 0.05em;
+    font-family: 'Orbitron', sans-serif;
+  }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+  .hidden { display: none !important; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- タイトル切替演出 -->
+  <div class="title-switch">
+    <div class="switch-text s1">
+      <div class="pre-title">BEHAVIOR<br>ANALYSIS SYSTEM</div>
+      <div class="pre-sub">▸ DETECTIVE FILE · INITIALIZING ◂</div>
+    </div>
+    <div class="switch-text s2">
+      <header class="header">
+        <div class="header-badges">
+          <span class="detective-tag">🔍 BEHAVIOR ANALYSIS</span>
+          <span class="series-tag">RELATIONSHIP · 01</span>
+        </div>
+        <h1>
+          <span style="font-family:'Orbitron',sans-serif;display:block;color:#e879f9;font-size:0.6em;letter-spacing:0.2em;margin-bottom:4px;">CHEATING BEHAVIOR SCORE</span>
+          <span class="h1-line2">パートナーの行動変化<br>浮気確率スコア 診断</span>
+        </h1>
+        <p class="catchphrase">「気のせい」か「本当に変わった」か。<strong style="color:#e879f9;">行動変化を数値化する。</strong></p>
+        <p class="subcopy">心理テストじゃない。探偵が見る「行動の変化」だけでスコアを出す。</p>
+        <div class="warning-note">
+          ⚠️ このツールは <strong>「感覚を数字にする」</strong> ためのものです<br>
+          浮気の有無を <strong>断定するツールではありません</strong>
+        </div>
+      </header>
+    </div>
+  </div>
+
+  <!-- STEP 01 -->
+  <section class="section" style="animation-delay: 3.5s; animation-fill-mode: backwards;">
+    <div class="step-label">STEP 01 · 基本情報</div>
+    <div class="section-title">関係性とタイミングを入力</div>
+
+    <div class="field">
+      <div class="field-label">
+        <span>関係性</span>
+        <span class="req">必須</span>
+      </div>
+      <div class="btn-grid col-2" id="relGrid">
+        <button class="opt-btn" data-rel="short">💑 交際中（〜6ヶ月）</button>
+        <button class="opt-btn active" data-rel="mid">💑 交際中（6ヶ月〜2年）</button>
+        <button class="opt-btn" data-rel="long">💑 交際中（2年以上）</button>
+        <button class="opt-btn" data-rel="married">💍 婚約・既婚</button>
+      </div>
+      <div class="hint">交際期間が長いほど「変化の意味」が重くなります。</div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">
+        <span>相手の性別</span>
+        <span class="opt">任意</span>
+      </div>
+      <div class="btn-grid col-3" id="genderGrid">
+        <button class="opt-btn active" data-gen="male">👨 男性</button>
+        <button class="opt-btn" data-gen="female">👩 女性</button>
+        <button class="opt-btn" data-gen="other">🧑 その他</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">
+        <span>変化に気づき始めた時期</span>
+        <span class="req">必須</span>
+      </div>
+      <div class="btn-grid col-2" id="timeGrid">
+        <button class="opt-btn" data-time="1week">⚡ 1週間以内<br><small>急激</small></button>
+        <button class="opt-btn active" data-time="1month">📅 1ヶ月以内</button>
+        <button class="opt-btn" data-time="3month">🗓️ 3ヶ月以内</button>
+        <button class="opt-btn" data-time="gradual">📆 半年以上前から<br><small>徐々に</small></button>
+      </div>
+      <div class="hint">急激な変化（1週間〜1ヶ月）はスコアに重みが追加されます。</div>
+    </div>
+  </section>
+
+  <!-- STEP 02 -->
+  <section class="section">
+    <div class="step-label">STEP 02 · 行動変化のチェック</div>
+    <div class="section-title">5カテゴリで「最近変わった」と感じるもの</div>
+    <p class="hint" style="margin-bottom: 16px;">
+      探偵が重視するのは<strong style="color:#e879f9;">「複数カテゴリの同時変化」</strong>。<br>
+      項目数ではなく、カテゴリの<strong>組み合わせ</strong>でスコアが決まります。
+    </p>
+
+    <div id="categoryContainer"></div>
+  </section>
+
+  <!-- STEP 03 -->
+  <section class="section">
+    <div class="step-label">STEP 03 · あなた自身の感覚</div>
+    <div class="section-title">直感と過去経験</div>
+
+    <div class="field">
+      <div class="field-label">
+        <span>あなた自身の直感スコア</span>
+        <span class="badge-mini"><span id="intuitionVal">50</span> / 100</span>
+      </div>
+      <div class="intuition-value">
+        <span class="num"><span id="intuitionDisp">50</span><span class="unit">点</span></span>
+      </div>
+      <div class="slider-touch">
+        <input type="range" id="intuitionSlider" min="0" max="100" step="5" value="50">
+      </div>
+      <div class="slider-marks">
+        <span>全く気にしてない</span>
+        <span>50</span>
+        <span>ほぼ確信している</span>
+      </div>
+      <div class="hint" style="margin-top: 10px;">
+        💡 過去の研究では、パートナーの浮気を正確に感じ取る確率は約 <strong style="color:#e879f9;">54%</strong> という結果があります。<br>
+        直感は <strong>重要なデータ</strong> ですが、それだけで結論を出さないでください。
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="field-label">
+        <span>過去の浮気経験</span>
+        <span class="opt">任意</span>
+      </div>
+      <div class="btn-grid col-3" id="pastGrid">
+        <button class="opt-btn active" data-past="none">なし</button>
+        <button class="opt-btn" data-past="past">過去の<br>パートナーに</button>
+        <button class="opt-btn" data-past="current">現在の<br>パートナーに</button>
+      </div>
+      <div class="hint">過去に浮気された経験がある場合、感度が上がっている可能性をスコアに補正します。</div>
+    </div>
+  </section>
+
+  <!-- ライブプレビュー -->
+  <div class="live-preview">
+    <span class="lbl">▸ 現在のスコア</span>
+    <span class="val" id="liveScore">
+      <span id="liveNum">0</span>
+      <span style="font-size:14px;color:#94a3b8;">/100</span>
+      <span class="lv" id="liveLv">準備中</span>
+    </span>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-wrap" id="ctaWrap">
+    <button class="cta-btn" id="calcBtn">🔍 行動変化スコアを診断する</button>
+  </div>
+
+  <!-- 結果 -->
+  <div id="resultArea">
+
+    <!-- ① メインスコア -->
+    <div class="result-block">
+      <div class="score-section lv-CAUTION" id="scoreSection">
+        <div class="score-label">▸ 行動変化スコア</div>
+        <div class="score-number-wrap">
+          <span class="score-number" id="scoreNum">0</span>
+          <span class="score-unit">/ 100</span>
+        </div>
+        <div class="level-tag lv-CAUTION" id="levelTag">
+          <span id="levelIcon">🟡</span>
+          <span id="levelName">CAUTION</span>
+        </div>
+        <div class="level-msg" id="levelMsg">複数の変化が重なっています</div>
+        <div class="probability-pair">
+          <div class="probability-cell safe">
+            <div class="lbl">「気のせい」の可能性</div>
+            <div class="num"><span id="probSafe">0</span>%</div>
+          </div>
+          <div class="probability-cell warn">
+            <div class="lbl">「変化がある」可能性</div>
+            <div class="num"><span id="probWarn">0</span>%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ② レーダー -->
+    <div class="result-block">
+      <div class="radar-card">
+        <div class="radar-title">▸ 5-AXIS BEHAVIOR RADAR</div>
+        <div class="radar-sub">カテゴリ別のスコア（最も高い軸がハイライト）</div>
+        <svg class="radar-svg" id="radarSvg" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg"></svg>
+        <div class="radar-legend" id="radarLegend"></div>
+      </div>
+    </div>
+
+    <!-- ③ TOP3 -->
+    <div class="result-block">
+      <div class="top3-card">
+        <div class="top3-title">⚠️ 特に注目すべき変化 TOP3</div>
+        <div class="top3-sub">あなたが選択した項目の中から、探偵的観点で重要度が高い3つ</div>
+        <div id="top3List"></div>
+      </div>
+    </div>
+
+    <!-- ④ 組み合わせ分析 -->
+    <div class="result-block">
+      <div class="combo-card">
+        <div class="combo-tag">📊 PATTERN ANALYSIS</div>
+        <div class="combo-title" id="comboTitle">変化の組み合わせ分析</div>
+        <div class="combo-categories" id="comboCategories"></div>
+        <div class="combo-body" id="comboBody">―</div>
+        <div class="combo-footnote">
+          ※ ただし、仕事のストレス・精神的な変化・別の個人的な問題でも
+          同様のパターンが出ることがあります。
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑤ 他の可能性 -->
+    <div class="result-block">
+      <div class="other-possibility">
+        <div class="other-title">💡 他の可能性も考えてください</div>
+        <div class="other-sub">同じ行動変化が「浮気以外の理由」で起きるケース</div>
+        <div class="other-list">
+          <div class="other-row">
+            <span class="icon">📱</span>
+            <div class="text"><strong>スマホを隠す</strong> <span class="reason">→ 仕事の機密情報・サプライズの準備</span></div>
+          </div>
+          <div class="other-row">
+            <span class="icon">🚗</span>
+            <div class="text"><strong>帰宅が遅い</strong> <span class="reason">→ 残業・職場の人間関係の問題</span></div>
+          </div>
+          <div class="other-row">
+            <span class="icon">💬</span>
+            <div class="text"><strong>会話が減る</strong> <span class="reason">→ うつ・燃え尽き症候群・仕事のストレス</span></div>
+          </div>
+          <div class="other-row">
+            <span class="icon">💄</span>
+            <div class="text"><strong>外見を整える</strong> <span class="reason">→ 昇進・プレゼン・自己成長の目標</span></div>
+          </div>
+          <div class="other-row">
+            <span class="icon">💳</span>
+            <div class="text"><strong>現金が増える</strong> <span class="reason">→ 趣味・投資・節税対策</span></div>
+          </div>
+        </div>
+        <div class="other-final">
+          このツールは<strong>「変化の可能性」を数値化</strong>するものです。<br>
+          確証を得るためには、<strong>直接話し合うこと</strong>が最初の一歩です。
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑥ アクション -->
+    <div class="result-block">
+      <div class="action-card" id="actionCard">
+        <div class="action-title" id="actionTitle">📋 次にどうするか</div>
+        <div class="action-sub" id="actionSub">スコアに応じた推奨アクション</div>
+        <ol class="action-list" id="actionList"></ol>
+        <div class="action-warn" id="actionWarn" style="display:none;">
+          ⚠ <strong>重要：</strong>このツールは確証を与えるものではありません。<br>
+          感情的に問い詰めることは避け、冷静に対話の場を作ることを推奨します。
+        </div>
+      </div>
+    </div>
+
+    <!-- ⑦ 免責 -->
+    <div class="result-block">
+      <div class="disclaimer-card">
+        <div class="disclaimer-title">⚠️ このツールについて</div>
+        <div class="disclaimer-body">
+          このツールは「<strong>行動変化のパターン</strong>」を数値化するものです。<br>
+          <strong>浮気の有無を断定するものではありません</strong>。<br><br>
+          同じ行動変化が、仕事のストレス・精神的な問題・別の個人的な事情でも起きることがあります。<br><br>
+          スコアに関わらず、不安を感じたら：<br>
+          <strong>まずパートナーと直接話し合うこと</strong> が最も大切です。
+        </div>
+        <div class="takuma-msg">
+          <span class="name">▸ Takuma</span>
+          このツールは「感覚を数字にする」ためのものです。<br>
+          感情的になる前に、冷静に現実を見るために使ってください。
+        </div>
+      </div>
+    </div>
+
+    <!-- シェア -->
+    <div class="result-block">
+      <div class="share-row">
+        <button class="share-btn primary" id="copyBtn">📋 結果をコピー</button>
+        <button class="share-btn" id="tweetBtn">𝕏 でシェア</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- フッター -->
+  <footer>
+    <div class="footer-title">▸ TAKUMA</div>
+    <div class="footer-desc">
+      人生を数値化するメディア<br><br>
+      このツールは<strong style="color:#e879f9;">行動変化のパターン</strong>を数値化するものです。<br>
+      浮気・不倫の有無を<strong>証明・断定するものではありません</strong>。<br>
+      診断結果をもとに行動する場合は、<br>
+      <strong>専門家（弁護士・カウンセラー）</strong> にご相談ください。
+    </div>
+
+    <div class="sister-section">
+      <div class="sister-label">▸ RELATIONSHIP SERIES</div>
+      <a class="sister-link disabled">
+        <span>💚 LINE温度差 診断</span>
+        <span class="price soon">近日</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sister-link disabled">
+        <span>💔 別れの予兆スコア 診断</span>
+        <span class="price soon">近日</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sister-link disabled">
+        <span>💑 恋愛依存度 診断</span>
+        <span class="price soon">近日</span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="sister-link disabled">
+        <span>🌸 愛着スタイル 完全診断</span>
+        <span class="price soon">¥500・近日</span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="note-link">
+      <a href="https://note.com/nissy1007" target="_blank" rel="noopener">▷ note.com/nissy1007</a>
+    </div>
+    <div style="margin-top:14px;font-size:10px;color:#475569;">© Cheating Behavior Score Calculator · Relationship Series</div>
+  </footer>
+</div>
+
+<div class="toast" id="toast">COPIED</div>
+
+<script>
+'use strict';
+
+/* ========== カテゴリ・項目定義 ========== */
+const CATEGORIES = [
+  {
+    id: 'A', emoji: '📱', name: 'スマホ・デジタル行動', weight: 20,
+    items: [
+      { id: 'A1', text: 'スマホを伏せて置くようになった', imp: 9 },
+      { id: 'A2', text: '通知音が来るとすぐ確認し、画面を隠す', imp: 8 },
+      { id: 'A3', text: 'スマホにパスワードを新しく設定した', imp: 7 },
+      { id: 'A4', text: 'LINEの既読がつくのが遅くなった', imp: 5 },
+      { id: 'A5', text: '深夜にスマホを操作している', imp: 7 },
+      { id: 'A6', text: '通話を別の部屋でするようになった', imp: 9 },
+      { id: 'A7', text: '写真や動画の共有が減った', imp: 4 },
+    ]
+  },
+  {
+    id: 'B', emoji: '🚗', name: '外出・行動パターン', weight: 18,
+    items: [
+      { id: 'B1', text: '帰宅時間が遅くなった（説明が曖昧）', imp: 9 },
+      { id: 'B2', text: '急な残業・飲み会が増えた', imp: 7 },
+      { id: 'B3', text: '休日の外出が増えた（理由が不明瞭）', imp: 8 },
+      { id: 'B4', text: '出張が増えた', imp: 5 },
+      { id: 'B5', text: '友達との時間が急に増えた', imp: 6 },
+      { id: 'B6', text: '車のシート位置・ミラーの角度が変わっていた', imp: 9 },
+      { id: 'B7', text: '領収書やレシートをすぐ捨てるようになった', imp: 8 },
+    ]
+  },
+  {
+    id: 'C', emoji: '💬', name: 'コミュニケーション・態度', weight: 22,
+    items: [
+      { id: 'C1', text: '会話が減った・会話が表面的になった', imp: 7 },
+      { id: 'C2', text: '問いただすと逆ギレ・話題をそらす', imp: 10 },
+      { id: 'C3', text: '「信じてくれないの？」という言葉が増えた', imp: 9 },
+      { id: 'C4', text: '以前より優しくなった（罪悪感の裏返し）', imp: 6 },
+      { id: 'C5', text: '2人きりの時間を避けるようになった', imp: 8 },
+      { id: 'C6', text: '呼び方が変わった（名前→苗字など）', imp: 5 },
+      { id: 'C7', text: 'スキンシップが急激に減った or 増えた（極端な変化）', imp: 7 },
+    ]
+  },
+  {
+    id: 'D', emoji: '💄', name: '外見・生活習慣', weight: 15,
+    items: [
+      { id: 'D1', text: '急に外見に気を使うようになった', imp: 6 },
+      { id: 'D2', text: '新しい香水・化粧品を使い始めた', imp: 7 },
+      { id: 'D3', text: '服の趣味が変わった', imp: 5 },
+      { id: 'D4', text: '体型管理・筋トレを始めた', imp: 4 },
+      { id: 'D5', text: '帰宅後すぐシャワーを浴びるようになった', imp: 8 },
+      { id: 'D6', text: '体や服に見慣れない匂いがすることがある', imp: 10 },
+      { id: 'D7', text: '休日の朝から身だしなみを整えるようになった', imp: 6 },
+    ]
+  },
+  {
+    id: 'E', emoji: '💳', name: 'お金・経済行動', weight: 25,
+    items: [
+      { id: 'E1', text: '現金を多く引き出すようになった', imp: 8 },
+      { id: 'E2', text: '通帳・クレジット明細を見せなくなった', imp: 9 },
+      { id: 'E3', text: '説明のつかない出費がある', imp: 9 },
+      { id: 'E4', text: 'ギフト・プレゼントの購入履歴がある（自分ではない）', imp: 10 },
+      { id: 'E5', text: '共有の貯金が減っている', imp: 9 },
+    ]
+  },
+];
+
+/* ========== 状態 ========== */
+const state = {
+  relationship: 'mid',
+  gender: 'male',
+  timeline: '1month',
+  checked: {}, // { 'A1': true, ... }
+  intuition: 50,
+  past: 'none',
+};
+
+const $ = (s) => document.querySelector(s);
+const $$ = (s) => document.querySelectorAll(s);
+
+function updateSliderBg(slider) {
+  const min = parseFloat(slider.min);
+  const max = parseFloat(slider.max);
+  const val = parseFloat(slider.value);
+  const pct = ((val - min) / (max - min)) * 100;
+  slider.style.setProperty('--pct', pct + '%');
+}
+
+/* ========== カテゴリ描画 ========== */
+function renderCategories() {
+  const c = $('#categoryContainer');
+  c.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const block = document.createElement('div');
+    block.className = 'category-block';
+    block.innerHTML = `
+      <div class="category-head">
+        <div class="category-name"><span class="emoji">${cat.emoji}</span>カテゴリ${cat.id}：${cat.name}</div>
+        <div class="category-count" id="catCount-${cat.id}">0 / ${cat.items.length}</div>
+      </div>
+      <div class="check-list">
+        ${cat.items.map(it => `
+          <label class="check-row">
+            <input type="checkbox" data-item="${it.id}">
+            <span>${it.text}</span>
+          </label>
+        `).join('')}
+      </div>
+    `;
+    c.appendChild(block);
+  });
+  // イベント
+  $$('.check-list input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.check-row').classList.toggle('checked', cb.checked);
+      state.checked[cb.dataset.item] = cb.checked;
+      updateCategoryCounts();
+      updateLivePreview();
+    });
+  });
+}
+
+function updateCategoryCounts() {
+  CATEGORIES.forEach(cat => {
+    const count = cat.items.filter(it => state.checked[it.id]).length;
+    const el = $(`#catCount-${cat.id}`);
+    if (el) {
+      el.textContent = `${count} / ${cat.items.length}`;
+      el.classList.toggle('has', count > 0 && count < 3);
+      el.classList.toggle('high', count >= 3);
+    }
+  });
+}
+
+renderCategories();
+
+/* ========== ボタングループ ========== */
+function bindGrid(selector, attr, stateKey) {
+  const grid = document.querySelector(selector);
+  grid.querySelectorAll('.opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      grid.querySelectorAll('.opt-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      state[stateKey] = btn.dataset[attr];
+      updateLivePreview();
+    });
+  });
+}
+bindGrid('#relGrid', 'rel', 'relationship');
+bindGrid('#genderGrid', 'gen', 'gender');
+bindGrid('#timeGrid', 'time', 'timeline');
+bindGrid('#pastGrid', 'past', 'past');
+
+/* 直感スライダー */
+const intuSlider = $('#intuitionSlider');
+intuSlider.addEventListener('input', () => {
+  state.intuition = parseInt(intuSlider.value, 10);
+  $('#intuitionVal').textContent = state.intuition;
+  $('#intuitionDisp').textContent = state.intuition;
+  updateSliderBg(intuSlider);
+  updateLivePreview();
+});
+updateSliderBg(intuSlider);
+
+/* ========== 計算ロジック ========== */
+function calculate() {
+  // カテゴリ別選択数とスコア
+  const catScores = {};
+  let categoryTotal = 0;
+  const activeCats = [];
+  CATEGORIES.forEach(cat => {
+    const count = cat.items.filter(it => state.checked[it.id]).length;
+    let s;
+    if (count === 0) s = 0;
+    else if (count === 1) s = cat.weight * 0.3;
+    else if (count === 2) s = cat.weight * 0.6;
+    else s = cat.weight * 1.0;
+    catScores[cat.id] = { score: s, count, weight: cat.weight };
+    categoryTotal += s;
+    if (count > 0) activeCats.push(cat.id);
+  });
+
+  // 複数カテゴリボーナス
+  const multiMap = { 1: 0, 2: 5, 3: 15, 4: 25, 5: 35 };
+  let multiBonus = multiMap[activeCats.length] || 0;
+
+  // 組み合わせ追加ボーナス
+  const hasA = activeCats.includes('A');
+  const hasB = activeCats.includes('B');
+  const hasD = activeCats.includes('D');
+  const hasE = activeCats.includes('E');
+  if (hasA && hasB) multiBonus += 10;  // スマホ+外出
+  if (hasA && hasE) multiBonus += 8;   // スマホ+お金
+  if (hasD && hasB) multiBonus += 7;   // 外見+外出
+
+  // タイムライン補正
+  const timeMul = { '1week': 1.4, '1month': 1.2, '3month': 1.0, 'gradual': 0.85 };
+  const tMul = timeMul[state.timeline] || 1.0;
+
+  // 関係性補正（長期ほど変化の意味が重い）
+  const relMul = { 'short': 0.9, 'mid': 1.0, 'long': 1.05, 'married': 1.1 };
+  const rMul = relMul[state.relationship] || 1.0;
+
+  let baseScore = (categoryTotal + multiBonus) * tMul * rMul;
+
+  // 直感スコア
+  const intuitionBonus = Math.round((state.intuition - 50) * 0.1);
+  baseScore += intuitionBonus;
+
+  // 過去経験
+  let expBonus = 0;
+  if (state.past === 'current') expBonus = -5; // 感度過敏補正
+  baseScore += expBonus;
+
+  const finalScore = Math.max(0, Math.min(100, Math.round(baseScore)));
+
+  // レベル判定
+  let level, icon, msg;
+  if (finalScore <= 20) { level = 'LOW'; icon = '🟢'; msg = '現時点では変化が少ない状態です'; }
+  else if (finalScore <= 40) { level = 'NOTICE'; icon = '🔵'; msg = '気になる変化が一部あります'; }
+  else if (finalScore <= 60) { level = 'CAUTION'; icon = '🟡'; msg = '複数の変化が重なっています'; }
+  else if (finalScore <= 79) { level = 'WARNING'; icon = '🟠'; msg = '見逃せない変化のパターンです'; }
+  else { level = 'CRITICAL'; icon = '🔴'; msg = '複数カテゴリで同時変化が確認されています'; }
+
+  return {
+    finalScore, level, icon, msg,
+    catScores, activeCats, multiBonus, tMul, rMul, intuitionBonus, expBonus,
+  };
+}
+
+/* ========== ライブプレビュー ========== */
+function updateLivePreview() {
+  const r = calculate();
+  $('#liveNum').textContent = r.finalScore;
+  const liveScore = $('#liveScore');
+  liveScore.className = 'val lv-' + r.level;
+  $('#liveLv').textContent = r.icon + ' ' + r.level;
+  // リアルタイム結果反映
+  if ($('#resultArea').classList.contains('show')) {
+    renderResults(true);
+  }
+}
+
+/* ========== 結果描画 ========== */
+function renderResults(silent) {
+  const r = calculate();
+
+  // ① メインスコア
+  const section = $('#scoreSection');
+  section.className = 'score-section lv-' + r.level;
+  $('#levelTag').className = 'level-tag lv-' + r.level;
+  $('#levelIcon').textContent = r.icon;
+  $('#levelName').textContent = r.level;
+  $('#levelMsg').textContent = r.msg;
+  if (!silent) {
+    animateNumber($('#scoreNum'), r.finalScore, 1500);
+  } else {
+    $('#scoreNum').textContent = r.finalScore;
+  }
+  $('#probSafe').textContent = 100 - r.finalScore;
+  $('#probWarn').textContent = r.finalScore;
+
+  // ② レーダー
+  renderRadar(r);
+
+  // ③ TOP3
+  renderTop3();
+
+  // ④ 組み合わせ分析
+  renderCombo(r);
+
+  // ⑥ アクション
+  renderAction(r);
+}
+
+/* レーダー */
+function renderRadar(r) {
+  const svg = $('#radarSvg');
+  const cx = 160, cy = 160, rad = 110;
+  const values = CATEGORIES.map(cat => {
+    const cs = r.catScores[cat.id];
+    return Math.min(100, (cs.score / cs.weight) * 100); // カテゴリ内の充実度（0-100）
+  });
+  const labels = CATEGORIES.map(cat => cat.emoji);
+  const names = CATEGORIES.map(cat => cat.name.split('・')[0]);
+
+  let html = '';
+  // グリッド
+  [0.25, 0.5, 0.75, 1.0].forEach(scale => {
+    const pts = [];
+    for (let i = 0; i < 5; i++) {
+      const angle = -Math.PI / 2 + (2 * Math.PI / 5) * i;
+      const x = cx + Math.cos(angle) * rad * scale;
+      const y = cy + Math.sin(angle) * rad * scale;
+      pts.push(`${x},${y}`);
+    }
+    html += `<polygon points="${pts.join(' ')}" fill="none" stroke="#2a1040" stroke-width="1" opacity="${0.4 + scale * 0.4}"/>`;
+  });
+  // 軸線
+  for (let i = 0; i < 5; i++) {
+    const angle = -Math.PI / 2 + (2 * Math.PI / 5) * i;
+    const x = cx + Math.cos(angle) * rad;
+    const y = cy + Math.sin(angle) * rad;
+    html += `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="#2a1040" stroke-width="1" opacity="0.5"/>`;
+  }
+  // 値ポリゴン
+  const valPts = [];
+  for (let i = 0; i < 5; i++) {
+    const angle = -Math.PI / 2 + (2 * Math.PI / 5) * i;
+    const scale = values[i] / 100;
+    const x = cx + Math.cos(angle) * rad * scale;
+    const y = cy + Math.sin(angle) * rad * scale;
+    valPts.push(`${x},${y}`);
+  }
+  html += `<polygon points="${valPts.join(' ')}" fill="rgba(232, 121, 249, 0.25)" stroke="#e879f9" stroke-width="2" stroke-linejoin="round">
+    <animate attributeName="opacity" from="0" to="1" dur="1.5s" fill="freeze"/>
+  </polygon>`;
+  // ドット
+  const maxIdx = values.indexOf(Math.max(...values));
+  for (let i = 0; i < 5; i++) {
+    const angle = -Math.PI / 2 + (2 * Math.PI / 5) * i;
+    const scale = values[i] / 100;
+    const x = cx + Math.cos(angle) * rad * scale;
+    const y = cy + Math.sin(angle) * rad * scale;
+    const isMax = i === maxIdx && values[i] > 0;
+    html += `<circle cx="${x}" cy="${y}" r="${isMax ? 7 : 5}" fill="${isMax ? '#fbbf24' : '#e879f9'}" stroke="#0a0a0f" stroke-width="2"/>`;
+  }
+  // ラベル
+  for (let i = 0; i < 5; i++) {
+    const angle = -Math.PI / 2 + (2 * Math.PI / 5) * i;
+    const lx = cx + Math.cos(angle) * (rad + 20);
+    const ly = cy + Math.sin(angle) * (rad + 20) + 6;
+    html += `<text x="${lx}" y="${ly}" text-anchor="middle" font-size="18">${labels[i]}</text>`;
+    const lx2 = cx + Math.cos(angle) * (rad + 36);
+    const ly2 = cy + Math.sin(angle) * (rad + 36) + 4;
+    html += `<text x="${lx2}" y="${ly2}" text-anchor="middle" fill="#94a3b8" font-size="10" font-weight="600">${names[i]}</text>`;
+  }
+  svg.innerHTML = html;
+
+  // 凡例
+  $('#radarLegend').innerHTML = CATEGORIES.map((cat, i) => `
+    <div class="legend-item ${i === maxIdx && values[i] > 0 ? 'top' : ''}">
+      <span class="lbl">${cat.emoji} ${cat.name.split('・')[0]}</span>
+      <span class="val">${Math.round(values[i])}</span>
+    </div>
+  `).join('');
+}
+
+/* TOP3 */
+function renderTop3() {
+  const checked = [];
+  CATEGORIES.forEach(cat => {
+    cat.items.forEach(it => {
+      if (state.checked[it.id]) {
+        checked.push({ ...it, catId: cat.id, catName: cat.name, catEmoji: cat.emoji });
+      }
+    });
+  });
+  const sorted = checked.sort((a, b) => b.imp - a.imp).slice(0, 3);
+  const c = $('#top3List');
+  if (sorted.length === 0) {
+    c.innerHTML = '<div style="text-align:center;color:#94a3b8;font-size:12px;padding:14px;">行動変化の選択がありません。<br>STEP 02 でチェックを入れてください。</div>';
+    return;
+  }
+  const TOP3_DESC = {
+    'A1': '<span class="arrow">→</span>スマホへの警戒度が急上昇したサイン。複数カテゴリの同時変化と重なる場合は要注意',
+    'A2': '<span class="arrow">→</span>通知の中身を隠す行動。誰からのメッセージか知られたくない心理',
+    'A3': '<span class="arrow">→</span>突然のパスワード設定は「見られたくない情報」が増えたサインの可能性',
+    'A4': '<span class="arrow">→</span>あなたへの注意配分が減っている可能性。他要因と組み合わせて判断',
+    'A5': '<span class="arrow">→</span>深夜のスマホ操作は「あなたが寝ている時間帯の連絡相手」がいるかも',
+    'A6': '<span class="arrow">→</span>通話を別室で行うのは内容を聞かれたくない強い意思のサイン',
+    'A7': '<span class="arrow">→</span>共有減は関係性の心理的距離の指標',
+    'B1': '<span class="arrow">→</span>説明が曖昧な帰宅遅延は最重要サインの1つ。記録を取ると見えてくる',
+    'B2': '<span class="arrow">→</span>急増した残業・飲み会の真偽は会社に確認できる場合があります',
+    'B3': '<span class="arrow">→</span>休日外出の理由不明は重要サイン。「誰と」を答えない場合は特に',
+    'B4': '<span class="arrow">→</span>出張の頻度・行き先を会社のスケジュールと照合できれば確実',
+    'B5': '<span class="arrow">→</span>誰の友達かを名前で確認できるか。具体性のなさが鍵',
+    'B6': '<span class="arrow">→</span>車内の物理的変化は最も客観的な証拠の1つ。同乗者の存在を示唆',
+    'B7': '<span class="arrow">→</span>レシート処分は支出を追跡されたくない心理。お金カテゴリとも連動',
+    'C1': '<span class="arrow">→</span>感情的距離が出ているサイン。関係性の見直しが必要なレベル',
+    'C2': '<span class="arrow">→</span>防衛反応の典型。後ろめたさのサインである可能性が高い',
+    'C3': '<span class="arrow">→</span>主導権を握り返す心理操作。問われた側の罪悪感を疑うべき',
+    'C4': '<span class="arrow">→</span>急な優しさは罪悪感の裏返しのケースあり。他サインと合わせて評価',
+    'C5': '<span class="arrow">→</span>関係性のフェードアウトのサイン。心理的に離れているかも',
+    'C6': '<span class="arrow">→</span>呼び方の変化は心理的距離の客観指標',
+    'C7': '<span class="arrow">→</span>スキンシップの極端な変化は両方向ともサインになりうる',
+    'D1': '<span class="arrow">→</span>単体では普通の自己改善。他カテゴリと重なるとき意味が変わる',
+    'D2': '<span class="arrow">→</span>新しい好みは新しい影響源を示唆する可能性',
+    'D3': '<span class="arrow">→</span>服の好みの変化は誰かの影響を受けている可能性',
+    'D4': '<span class="arrow">→</span>体型管理単体は健康志向の可能性も大いにある',
+    'D5': '<span class="arrow">→</span>帰宅後即シャワーは「何かを洗い流す」心理。最重要サインの1つ',
+    'D6': '<span class="arrow">→</span>見慣れない匂いは最も直接的な物理的サイン',
+    'D7': '<span class="arrow">→</span>休日朝の身だしなみは「誰かに会う予定」のサイン',
+    'E1': '<span class="arrow">→</span>現金引き出しは追跡されない支出。重要なサインです',
+    'E2': '<span class="arrow">→</span>明細隠しは支出の説明を避ける心理。最重要サインの1つ',
+    'E3': '<span class="arrow">→</span>説明のつかない出費は具体的な行動の痕跡',
+    'E4': '<span class="arrow">→</span>身に覚えのないギフト購入は決定的なサインに近い',
+    'E5': '<span class="arrow">→</span>共有貯金の減少は最も追跡しやすい客観データ',
+  };
+  c.innerHTML = sorted.map((it, i) => `
+    <div class="top3-row rank${i + 1}">
+      <div class="top3-head">
+        <span class="top3-rank">${i + 1}位</span>
+        <span class="top3-name">${it.catEmoji} ${it.text}</span>
+      </div>
+      <div class="top3-desc">${TOP3_DESC[it.id] || '<span class="arrow">→</span>重要な変化サインです'}</div>
+    </div>
+  `).join('');
+}
+
+/* 組み合わせ分析 */
+function renderCombo(r) {
+  const cats = r.activeCats;
+  const catObj = {
+    'A': { name: 'スマホ', emoji: '📱' },
+    'B': { name: '外出', emoji: '🚗' },
+    'C': { name: 'コミュニケーション', emoji: '💬' },
+    'D': { name: '外見', emoji: '💄' },
+    'E': { name: 'お金', emoji: '💳' },
+  };
+  $('#comboCategories').innerHTML = cats.map(id => `
+    <span class="combo-chip">${catObj[id].emoji} ${catObj[id].name}</span>
+  `).join('');
+
+  let title, body;
+  if (cats.length === 0) {
+    title = '行動変化のチェックがありません';
+    body = 'STEP 02 でチェックを入れると、変化のパターンを分析できます。';
+  } else if (cats.length === 1) {
+    title = `${cats.length}カテゴリのみの変化`;
+    body = `<strong>1カテゴリのみ</strong>の変化は、<strong>仕事・体調・趣味</strong>などの個人的な事情で起きるケースが大半です。<br>単独のサインで結論を出さないことを推奨します。`;
+  } else if (cats.length === 2) {
+    title = `${cats.length}カテゴリの同時変化`;
+    body = `<strong>2カテゴリの同時変化</strong>は気になるパターンですが、<strong>偶然の重なり</strong>である可能性も十分にあります。<br>もう少し観察期間を置いて、3カテゴリ以上になるかどうかが判断のポイント。`;
+  } else if (cats.length === 3) {
+    title = `${cats.length}カテゴリの同時変化（要注意ライン）`;
+    const hasABC = cats.includes('A') && cats.includes('B') && cats.includes('C');
+    if (hasABC) {
+      body = `<strong>スマホ・外出・コミュニケーション</strong>の3つが同時に変化しているパターン。<br>「外で会う機会が増え、それを隠すためにスマホ管理を強化し、関係性への罪悪感からコミュニケーションが変化しているパターン」に一致します。`;
+    } else {
+      body = `<strong>3カテゴリの同時変化</strong>は探偵的観点で <strong>要注意ライン</strong> です。<br>偶然の重なりとしては多すぎる組み合わせ。冷静に観察を続けてください。`;
+    }
+  } else if (cats.length === 4) {
+    title = `${cats.length}カテゴリの同時変化（危険ライン）`;
+    body = `<strong>4カテゴリの同時変化</strong>は探偵的観点で <strong>危険ライン</strong>。<br>これだけ広範囲の行動変化が同時に起きるのは、<strong>「意図的な何か」</strong> が背景にあるパターンが多いとされます。<br>ただし、転職・大病・家族問題などの大きな個人的事情でも同様の変化が起きることがあります。`;
+  } else {
+    title = `全5カテゴリで変化が確認されています`;
+    body = `<strong>全カテゴリで変化</strong>が確認されています。<br>このレベルの全方位的な変化は <strong>偶然の重なりとは考えにくい</strong> パターン。<br>ただし、人生の大きな転機（転職・引っ越し・家族の死など）でも全方位的に行動が変わることがあります。<br><strong>必ず直接対話を通じて事実を確認</strong>してください。`;
+  }
+  $('#comboTitle').textContent = title;
+  $('#comboBody').innerHTML = body;
+}
+
+/* アクション */
+function renderAction(r) {
+  const card = $('#actionCard');
+  card.className = 'action-card lv-' + r.level;
+  let title, sub, items, showWarn = false;
+  if (r.level === 'LOW' || r.level === 'NOTICE') {
+    title = '💡 現時点では行動変化のパターンが少ない';
+    sub = 'もしも不安な気持ちが続くなら、軽い行動から';
+    items = [
+      '<strong>「最近なんか変わった？」</strong>と軽く話しかけてみる（疑いの言葉は使わない）',
+      '<strong>2人で過ごす時間</strong>を意図的に作る（カフェ・散歩など）',
+      '<strong>1ヶ月後に再診断</strong>して変化を確認する',
+    ];
+  } else if (r.level === 'CAUTION' || r.level === 'WARNING') {
+    title = '⚠️ 複数の変化が重なっています';
+    sub = 'ただし確証はありません。冷静に対話の準備を';
+    items = [
+      'まず「<strong>最近なんか元気なさそうだけど、仕事大変？</strong>」と聞く（浮気を疑っていることは言わず、様子を見る）',
+      '反応を見て、<strong>もう少し踏み込んだ会話</strong>をする',
+      '感情的にならず「<strong>私、最近〇〇が気になってる</strong>」と伝える（責めない、観察を共有する）',
+      'それでも変化が続くなら、<strong>話し合いの場を作る</strong>',
+    ];
+    showWarn = true;
+  } else {
+    title = '🚨 複数カテゴリで同時変化が確認';
+    sub = 'ただし、このツールは確証を与えるものではありません';
+    items = [
+      '<strong>感情的に問い詰めることは避ける</strong>（証拠がない状態での追及は逆効果）',
+      '<strong>信頼できる友人に相談</strong>する（一人で抱えない）',
+      '「<strong>2人の関係について話し合う時間を作りたい</strong>」と冷静に伝える',
+      '<strong>専門家（カウンセラー・弁護士）への相談</strong>も選択肢の一つです',
+    ];
+    showWarn = true;
+  }
+  $('#actionTitle').textContent = title;
+  $('#actionSub').textContent = sub;
+  $('#actionList').innerHTML = items.map(it => `<li>${it}</li>`).join('');
+  $('#actionWarn').style.display = showWarn ? 'block' : 'none';
+}
+
+/* カウントアップ */
+function animateNumber(el, target, duration) {
+  const start = parseFloat(String(el.textContent).replace(/[,]/g, '')) || 0;
+  const startTime = performance.now();
+  function step(now) {
+    const t = Math.min(1, (now - startTime) / duration);
+    const eased = 1 - Math.pow(1 - t, 3);
+    const cur = start + (target - start) * eased;
+    el.textContent = Math.round(cur);
+    if (t < 1) requestAnimationFrame(step);
+    else el.textContent = target;
+  }
+  requestAnimationFrame(step);
+}
+
+/* CTA */
+$('#calcBtn').addEventListener('click', () => {
+  const ra = $('#resultArea');
+  const isFirst = !ra.classList.contains('show');
+  ra.classList.add('show');
+  $('#ctaWrap').classList.add('calculated');
+  $('#calcBtn').innerHTML = '↻ 再診断する';
+  renderResults(false);
+  if (isFirst) {
+    setTimeout(() => $('#scoreSection').scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+  }
+});
+
+/* シェア */
+function buildShareText() {
+  const r = calculate();
+  return `【パートナーの行動変化 浮気確率スコア】
+
+スコア：${r.finalScore}/100
+レベル：${r.icon} ${r.level}
+${r.msg}
+
+「気のせい」可能性：${100 - r.finalScore}%
+「変化がある」可能性：${r.finalScore}%
+
+※このツールは確証を与えるものではありません
+
+#浮気診断 #行動変化スコア`;
+}
+
+$('#copyBtn').addEventListener('click', async () => {
+  const text = buildShareText();
+  try { await navigator.clipboard.writeText(text); showToast('COPIED'); }
+  catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+    showToast('COPIED');
+  }
+});
+
+$('#tweetBtn').addEventListener('click', () => {
+  const text = encodeURIComponent(buildShareText());
+  const url = encodeURIComponent(location.href);
+  window.open(`https://twitter.com/intent/tweet?text=${text}&url=${url}`, '_blank', 'noopener');
+});
+
+function showToast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+updateLivePreview();
+</script>
+</body>
+</html>
